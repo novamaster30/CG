@@ -1,0 +1,81 @@
+#include<iostream>
+#include<graphics.h>
+#include <iostream>
+#include<math.h>
+#include<X11/Xlib.h> 
+Using namespace std;
+Static int LEFT=1,RIGHT=2,BOTTOM=4,TOP=8,xl,yl,xh,yh;
+
+Int getcode(int x,int y){
+	Int code = 0;
+	If(y > yh) code |=TOP;
+	If(y < yl) code |=BOTTOM;
+	If(x < xl) code |=LEFT;
+	If(x > xh) code |=RIGHT;
+	Return code;
+}
+
+Int main()
+{
+	Int gdriver = DETECT,gmode;
+	Initgraph(&gdriver,&gmode,NULL);
+	Setcolor(BLUE);
+	Cout<<”Enter bottom left and top right co-ordinates of window: “;
+	Cin>>xl>>yl>>xh>>yh;
+	Rectangle(xl,yl,xh,yh);
+	Int x1,y1,x2,y2;
+	Cout<<”Enter the endpoints of the line: “;
+	Cin>>x1>>y1>>x2>>y2;
+	Line(x1,y1,x2,y2);
+	Getch();
+
+	Int outcode1=getcode(x1,y1), outcode2=getcode(x2,y2);
+	Int accept = 0; 
+	While(1){
+		Float m =(float)(y2-y1)/(x2-x1);
+		If(outcode1==0 && outcode2==0){ 
+			Accept = 1;
+			Break;
+		}
+		Else if((outcode1 & outcode2)!=0){
+			Break;
+		}else{
+			Int x,y;
+			Int temp;
+			If(outcode1==0) 
+				Temp = outcode2;
+			Else 
+				Temp = outcode1;
+			If(temp & TOP){
+				X = x1+ (yh-y1)/m;
+				Y = yh;
+			}
+			Else if(temp & BOTTOM){ 
+				X = x1+ (yl-y1)/m;
+				Y = yl;
+			}else if(temp & LEFT){
+				X = xl;
+				Y = y1+ m*(xl-x1);
+			}else if(temp & RIGHT){ 
+				X = xh;
+				Y = y1+ m*(xh-x1);
+			}
+			If(temp == outcode1){ 
+				X1 = x;
+				Y1 = y;
+				Outcode1 = getcode(x1,y1);
+			}else{
+				X2 = x;
+				Y2 = y;
+				Outcode2 = getcode(x2,y2);
+			}
+		}
+	}
+	Setcolor(RED);
+	Cout<<”After clipping:”;
+	If(accept)
+		Line(x1,y1,x2,y2);
+	Getch();
+	Closegraph();
+         Return 0;
+} 
