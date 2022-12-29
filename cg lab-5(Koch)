@@ -62,14 +62,9 @@ void fractal:: koch (int it, int x1, int y1, int x5, int y5)
 
   void fractal::draw()
   {
-   //int x1,x2,y1,y2,n;
 
    cout<<"\n\tEnter The No Of Iteration:=>";
    cin>>n;
-  /* cout<<"\n\tEnter The three vertices of equilateral triangle:=>";
-   cin>>x1>>y1>>x2>>y2>>x3>>y3;*/
-
-	
 	koch(n,280,280,150,20);
  koch(n,20,280,280,280);
 	koch(n,150,20,20,280);
@@ -88,4 +83,4 @@ getch();
 
  
  return 0;
-}  
+} 
