@@ -160,8 +160,6 @@ int main()
 
 	r1=(float)(sqrt(3)*l)/6; 
 
-	circumcircle centre==(xc,yc);
-
 	a=xc-(float)(l/2);  
 	b=yc+r1;
 	c=xc+(float)(l/2);
