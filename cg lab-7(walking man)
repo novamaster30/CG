@@ -7,12 +7,13 @@ class WalkingMan{
 		void draw(int);
 };
 void WalkingMan::draw(int i){
-line(20,380,580,380); //platform
+line(20,380,580,380); 
+
 if(i%2==0)
 {
-line(25+i,380,35+i,340); //leftleg
-line(45+i,380,35+i,340);//right leg
-line(35+i,310,25+i,330);//left hand
+line(25+i,380,35+i,340); 
+line(45+i,380,35+i,340);
+line(35+i,310,25+i,330);
 delay(20);
 }
 else
@@ -21,15 +22,17 @@ line(35+i,380,35+i,340);
 line(35+i,310,40+i,330);
 delay(20);
 }
-line(35+i,340,35+i,310); //body
-circle(35+i,300,10); //head
-line(35+i,310,50+i,330); // hand
-line(50+i,330,50+i,280); //umbrella stick
-line(15+i,280,85+i,280); //umbrella right
 
-arc(50+i,280,180,360,35); //umbrella body
-arc(55+i,330,0,180,5);//umbrella handle
+line(35+i,340,35+i,310); 
+circle(35+i,300,10); 
+line(35+i,310,50+i,330); 
+line(50+i,330,50+i,280); 
+line(15+i,280,85+i,280); 
+
+arc(50+i,280,180,360,35); 
+arc(55+i,330,0,180,5);
 }
+
 void WalkingMan::draw(int x, int y){
 	int j;
 	rhx=x;
@@ -46,7 +49,8 @@ int main()
 int gd=DETECT,gm;
 int rhx,rhy,j,i;
 WalkingMan obj;
-initgraph(&gd,&gm,"");
+
+initgraph(&gd,&gm,NULL);
 for(i=0;i<500;i+=5)
 {
 obj.draw(i);
